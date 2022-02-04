@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 //sets session time limit in seconds
-app.use(sessionStore(60 * 60));
+app.use(sessionStore(7200));
 
 app.use("/auth", authRoutes);
 app.use("/api", apiRoutes);

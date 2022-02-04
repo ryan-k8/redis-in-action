@@ -7,7 +7,11 @@ const defaultCookieOptions = {
 };
 
 module.exports = (sessionTimeLimit) => {
-  const ctl = sessionTimeLimit * 1000 || Number.MAX_SAFE_INTEGER;
+  /**
+   * @default sessionExpiryTime : 3hrs
+   */
+
+  const ctl = sessionTimeLimit * 1000 || 10800 * 1000;
   const cookieOpts = { ...defaultCookieOptions, maxAge: ctl };
 
   return async (req, res, next) => {
