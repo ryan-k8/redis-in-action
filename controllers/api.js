@@ -44,7 +44,6 @@ exports.showDetails = async (req, res, next) => {
 
 exports.streamEp = async (req, res, next) => {
   try {
-    console.log(req.connection);
     const { showId, epNo } = req.params;
 
     const reply = await redisClient.get(showId + epNo);

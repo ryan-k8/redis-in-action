@@ -11,6 +11,9 @@ const sessionStore = require("./middlewares/session");
 
 const app = express();
 
+//when behind a proxy (heroku,nginx etc.)
+app.set("trust proxy", true);
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cookieParser());

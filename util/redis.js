@@ -21,6 +21,41 @@ module.exports = {
     });
   },
 
+  getAll: () => {
+    return new Promise((resolve, reject) => {
+      redis.keys("*", (err, result) => {
+        if (err) {
+          reject(err);
+        }
+
+        resolve(result);
+      });
+    });
+  },
+
+  ttl: (key) => {
+    return new Promise((resolve, reject) => {
+      redis.ttl(key, (err, result) => {
+        if (err) {
+          reject(err);
+        }
+        resolve(result);
+      });
+    });
+  },
+
+  incr: (key) => {
+    return new Promise((resolve, reject) => {
+      redis.incr(key, (err, reply) => {
+        if (err) {
+          reject(err);
+        }
+
+        resolve(reply);
+      });
+    });
+  },
+
   set: (key, value, seconds) => {
     return new Promise((resolve, reject) => {
       redis.setex(key, seconds, value, (err, result) => {
